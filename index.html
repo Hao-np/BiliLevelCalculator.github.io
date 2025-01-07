@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+    <title>bilibili等级计算器</title>
+    <!--<link rel="stylesheet" href="styles.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+    <meta name="renderer" content="webkit">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Outlined -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> <!-- Rounded -->
+    <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css">
+    <script src="https://unpkg.com/mdui@2/mdui.global.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="mdui-theme-auto" style="position: relative;overflow: hidden">
+    <mdui-top-app-bar scroll-behavior="elevate" scroll-target=".example-scroll-behavior-elevate">
+        <mdui-avatar src="favicon.png" style="border-radius: 0px; background: #00000000;"></mdui-avatar>
+        <!--<mdui-button-icon icon="favicon.png"></mdui-button-icon>-->
+        <mdui-top-app-bar-title>Bili等级计算器</mdui-top-app-bar-title>
+        <div style="flex-grow: 1"></div>
+        
+        <mdui-dropdown>
+            <mdui-button-icon icon="more_vert" slot="trigger"></mdui-button-icon>
+            <mdui-menu>
+                <mdui-menu-item href="https://github.com">GitHub</mdui-menu-item>
+                <mdui-menu-item href="https://haonp.us.kg"></mdui-menu-item>
+            </mdui-menu>
+        </mdui-dropdown>
+    </mdui-top-app-bar>
+
+    <div class="example-scroll-behavior-elevate" style="height: calc(100vh - 64px);overflow: auto;">
+        <div>每日登录<br><mdui-chip selectable selected name="login">经验+5</mdui-chip></div>
+        <br>
+        <div>每日观看<br><mdui-chip selectable selected name="watch">经验+5</mdui-chip></div>
+        <br>
+        <div>每日分享<br><mdui-chip selectable name="share">经验+5</mdui-chip></div>
+        <br>
+        <!--<div>风纪委员<br><mdui-chip selectable name="moderator">月度S级+30硬币</mdui-chip></div>
+        <br>-->
+        <mdui-text-field style="width: 90%;" variant="outlined" label="当前硬币数" id="coin"></mdui-text-field>
+        <br><br>
+        <mdui-select style="width: 90%;" label="请选择您每天要投的硬币数量" value="1" id="coins">
+            <mdui-menu-item value="0">不投币(0经验)</mdui-menu-item>
+            <mdui-menu-item value="1">1枚(10经验)</mdui-menu-item>
+            <mdui-menu-item value="2">2枚(20经验)</mdui-menu-item>
+            <mdui-menu-item value="3">3枚(30经验)</mdui-menu-item>
+            <mdui-menu-item value="4">4枚(40经验)</mdui-menu-item>
+            <mdui-menu-item value="5">5枚(50经验)</mdui-menu-item>
+        </mdui-select>
+        <br><br>
+        <mdui-text-field style="width: 90%;" variant="outlined" label="当前经验" id="experience"></mdui-text-field>
+        <br><br>
+        <mdui-select style="width: 90%;" label="请选择您要达到的等级" value="28800" id="targetLevel">
+            <mdui-menu-item value="200">Lv.2 (200经验)</mdui-menu-item>
+            <mdui-menu-item value="1500">Lv.3 (1500经验)</mdui-menu-item>
+            <mdui-menu-item value="4500">Lv.4 (4500经验)</mdui-menu-item>
+            <mdui-menu-item value="10800">Lv.5 (10800经验)</mdui-menu-item>
+            <mdui-menu-item value="28800">Lv.26 (28800经验)</mdui-menu-item>
+        </mdui-select>
+        <br><br>
+        <mdui-button style="margin-left: 20px; margin-right: 20px; margin-bottom: 20px;" icon="adjust" full-width id="result">开始计算</mdui-button>
+
+        <mdui-card variant="elevated" style="width: 85%;height: auto;margin-bottom: 20px; padding: 20px;">
+            <h3 style="margin-top:0px;margin-bottom:15px;">公告</h3>
+            我感觉我的计算公式有毛病
+            <br>
+            [(选择等级-当前经验)-(登录+观看+分享+选择投币数*10)*当前金币/选择投币数]/(登录+观看+分享)+拥有金币数量/选择投币数
+            <br>
+            <mdui-button href="https://qm.qq.com/q/fE09iUNEBO" target="_blank" style="margin-top: 15px;">点我反馈</mdui-button>
+        </mdui-card>
+
+        <script src="script.js"></script>
+
+
+</body>
+<footer>
+    <!--分割线-->
+    <div class="divider" style="text-align: left;margin-top: -6px;" data-v-6022fb55="">
+        <svg aria-hidden="true" width="100%" height="8" fill="none" xmlns="http://www.w3.org/2000/svg" data-v-6022fb55="">
+            <pattern id="a" width="91" height="8" patternunits="userSpaceOnUse" data-v-6022fb55="">
+                <g clip-path="url(#clip0_2426_11367)" data-v-6022fb55="">
+                    <path d="M114 4c-5.067 4.667-10.133 4.667-15.2 0S88.667-.667 83.6 4 73.467 8.667 68.4 4 58.267-.667 53.2 4 43.067 8.667 38 4 27.867-.667 22.8 4 12.667 8.667 7.6 4-2.533-.667-7.6 4s-10.133 4.667-15.2 0S-32.933-.667-38 4s-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0-10.133-4.667-15.2 0-10.133 4.667-15.2 0" stroke="#E1E3E1" stroke-linecap="square" data-v-6022fb55=""></path>
+                </g>
+            </pattern>
+            <rect width="100%" height="100%" fill="url(#a)" data-v-6022fb55=""></rect>
+        </svg>
+    </div>
+    <a target="_blank" href="https://icp.gov.moe/?keyword=20255255" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; margin-bottom: 10px; text-decoration: none;"> <img src="/moe.png" width="15" height="15" style="margin-right: 5px;"> 萌ICP备20255255号 </a>
+    <div class="github-badge-big" style="width: 10dp; margin-bottom: 20px;"><span class="badge-subject"> <i class="fa fa-clock-o"></i>本站已运行<span id="blog_running_days" class="odometer odometer-auto-theme"></span>天<span id="blog_running_hours" class="odometer odometer-auto-theme"></span>时<span id="blog_running_mins" class="odometer odometer-auto-theme"></span>分<span id="blog_running_secs" class="odometer odometer-auto-theme"></span>秒</span></div>
+    <script src="running_time.js"></script>
+</footer>
+
+</html>
